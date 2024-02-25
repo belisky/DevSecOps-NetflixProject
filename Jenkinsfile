@@ -5,7 +5,7 @@ pipeline {
         nodejs 'node16'
     }
     environment {
-        SCANNER_HOME = tool 'SonarQube Scanner 5.0.1.3006'
+        SCANNER_HOME = tool 'sonar'
     }
     stages {
         stage('clean workspace') {
@@ -20,7 +20,7 @@ pipeline {
         }
         stage("Sonarqube Analysis") {
             steps {
-                withSonarQubeEnv('SonarQube Scanner 5.0.1.3006') {
+                withSonarQubeEnv('Sonar') {
                     sh '''$SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Netflix \
                     -Dsonar.projectKey=Netflix'''
                 }
