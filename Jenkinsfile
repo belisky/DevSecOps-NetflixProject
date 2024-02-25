@@ -5,7 +5,7 @@ pipeline {
         nodejs 'node16'
     }
     environment {
-        SCANNER_HOME = tool 'sonar'
+        SCANNER_HOME = tool name: 'sonar_scanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation';
     }
     stages {
         stage('clean workspace') {
