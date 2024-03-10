@@ -52,7 +52,7 @@ pipeline{
         stage('TRIVY FS SCAN') {
             steps {
                 sh "trivy fs . > trivyfs.txt"
-                sh "sudo usermod -a -G docker jenkins"
+              
             }
         }
         stage("Docker Build & Push"){
