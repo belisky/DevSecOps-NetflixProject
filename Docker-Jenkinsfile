@@ -73,7 +73,11 @@ pipeline{
         }
         stage('Deploy to container'){
             steps{
+                
                 sh 'docker run -d --name netflix -p 8081:80 ${DOCKER_IMG}'
+                sh 'curl localhost:8081'
+                sh 'docker container stop netflix'
+                sh 'docker container rm netflix'
             }
         }
     }
